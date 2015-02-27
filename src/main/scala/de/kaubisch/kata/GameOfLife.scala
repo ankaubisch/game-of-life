@@ -8,11 +8,9 @@ case class Alive(x: Int, y: Int) extends Position
 case class Dead(x: Int, y: Int) extends Position
 
 class GameOfLife(positions: Seq[Position]) {
-  def makeTurn : GameOfLife =  new GameOfLife(positions.map (p => getNewStatusOfCell(p)))
-
-  def hasCell(p: Position) : Boolean = positions.contains(p)
-
-  def addCell(p: Position) : GameOfLife = new GameOfLife(positions :+ p)
+  def makeTurn() : GameOfLife =  new GameOfLife(positions.map(getNewStatusOfCell))
+  def hasCell(pos: Position) : Boolean = positions.contains(pos)
+  def addCell(pos: Position) : GameOfLife = new GameOfLife(positions :+ pos)
 
   private def getNewStatusOfCell(pos: Position) : Position = (pos, getCountOfNeighbours(pos)) match {
       case (Alive(_,_),2) | (Alive(_,_),3) => Alive(pos.x, pos.y)
