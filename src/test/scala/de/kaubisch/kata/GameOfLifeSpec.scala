@@ -10,14 +10,14 @@ class GameOfLifeSpec extends FlatSpec with Matchers {
       .hasCell(Alive(1, 1)) should be === true
   }
 
-  it should "has a dead cell when the game has make a turn" in {
+  it should "kill an alive cell after next turn" in {
     GameOfLife()
       .addCell(Alive(1, 1))
       .makeTurn
       .hasCell(Dead(1,1)) should be === true
   }
 
-  it should "has a alive cell when cell has 2 neighbours" in {
+  it should "keep alive a cell after next turn when it has 2 neighbours" in {
     GameOfLife()
       .addCell(Alive(1, 1))
       .addCell(Alive(2, 1))
@@ -26,7 +26,7 @@ class GameOfLifeSpec extends FlatSpec with Matchers {
       .hasCell(Alive(1, 1)) should be === true
   }
 
-  it should "has a alive cell when cell has 3 neighbours" in {
+  it should "keep alive a cell after next turn when it has 3 neighbours" in {
     GameOfLife()
       .addCell(Alive(1, 1))
       .addCell(Alive(2, 1))
@@ -36,7 +36,7 @@ class GameOfLifeSpec extends FlatSpec with Matchers {
       .hasCell(Alive(1,1)) should be === true
   }
 
-  it should "has a dead cell when cell has more then 3 neighbours" in {
+  it should "kills an alive cell after net turn when it has more then 3 neighbours" in {
     GameOfLife()
       .addCell(Alive(1, 1))
       .addCell(Alive(2, 1))
@@ -47,7 +47,7 @@ class GameOfLifeSpec extends FlatSpec with Matchers {
       .hasCell(Dead(1,1)) should be === true
   }
 
-  it should "reborn a dead cell when has exact 3 neighbours" in {
+  it should "reborn a dead cell after next turn when it has exact 3 neighbours" in {
     GameOfLife()
       .addCell(Alive(1,1))
       .addCell(Alive(2,1))
@@ -57,7 +57,7 @@ class GameOfLifeSpec extends FlatSpec with Matchers {
       .hasCell(Alive(2,2)) should be === true
   }
 
-  it should "create a blinker when has correct cells set" in {
+  it should "create a blinker after next turn when it has correct cells set" in {
     val game = GameOfLife()
       .addCell(Alive(0,0))
       .addCell(Alive(1,0))
