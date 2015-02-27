@@ -1,4 +1,4 @@
-package com.example
+package de.kaubisch.kata
 
 import org.scalatest._
 import org.scalatest.matchers.ShouldMatchers

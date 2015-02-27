@@ -1,4 +1,4 @@
-package com.example
+package de.kaubisch.kata
 
 sealed trait Position {
   val x: Int
