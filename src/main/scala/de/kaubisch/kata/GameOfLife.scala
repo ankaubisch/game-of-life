@@ -13,9 +13,7 @@ class GameOfLife(positions: Seq[Position]) {
   def addCell(pos: Position) : GameOfLife = new GameOfLife(positions :+ pos)
 
   private def getNewStatusOfCell(pos: Position) : Position = (pos, getCountOfNeighbours(pos)) match {
-      case (Alive(_,_),2) | (Alive(_,_),3) => Alive(pos.x, pos.y)
-      case (Dead(_,_), 3) => Alive(pos.x, pos.y)
-      case (_,neighbours) if neighbours > 3 => Dead(pos.x, pos.y)
+      case (Alive(_,_),2) | (_,3) => Alive(pos.x, pos.y)
       case _ => Dead(pos.x, pos.y)
     }
 
